@@ -4,6 +4,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background:#eeeeee;
 }
 
 .header{
@@ -14,4 +15,38 @@ body {
 .header h1{
   font-size: 30px;
   margin: 20px 0 0 0;
+}
+
+
+/* label focus color */
+.input-field input[type=text]:focus + label {
+  color: #00b0ff !important;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #00b0ff !important;
+  box-shadow: 0 1px 0 0 #000;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: #00b0ff !important;
+}
+.pagination li.active{
+  background-color: #00b0ff;
+}
+
+.book-list-item{
+  cursor:pointer;
+  margin-bottom: 30px;
+}
+.book-list-item .cover{
+  width: 100%;
+  transition: all 0.3s ease;
+}
+.book-list-item .authors{
+  color: #b1b1b1;
+}
+.book-list-item:hover .cover{
+  webkit-box-shadow: 0 8px 17px 2px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 17px 2px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
 }
