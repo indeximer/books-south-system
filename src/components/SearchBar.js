@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
 import Container from './Container';
 import {DebounceInput} from 'react-debounce-input';
-import * as BooksAPI from '../utils/BooksAPI';
+import PropTypes from 'prop-types';
 
 class SearchBar extends Component{
+    
+    static propTypes = {
+        onSearchBooks: PropTypes.func.isRequired
+    }
 
     state ={
         query:''
@@ -13,8 +17,7 @@ class SearchBar extends Component{
         const query = encodeURI(value);
         this.setState({query : query});
 
-        BooksAPI.search(query)
-        .then((books) => console.log(books));
+        this.props.onSearchBooks(query);
     }
 
     render(){

@@ -1,12 +1,19 @@
 import React from "react";
 import Container from './Container';
 import Book from './Book';
+import PropTypes from 'prop-types';
 
-function ListBooks() {
+ListBooks.propTypes = {
+    books: PropTypes.array.isRequired
+}
+
+function ListBooks(props) {
     return(
         <Container>
             <ul className="book-list row">
-                <Book/>
+                {props.books.map((book) => (
+                    <Book book={book} key={book.id}/>
+                ))}
             </ul>
         </Container>
     );

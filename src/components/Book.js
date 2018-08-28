@@ -1,11 +1,26 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import noCover from '../img/No-cover-placeholder.png';
 
-function Book(){
+Book.propTypes = {
+    book: PropTypes.object.isRequired
+}
+
+function Book(props){
+
+    const book = props.book.volumeInfo;
+    const title = book.title;
+    const authors = book.authors;
+    const cover = book.imageLinks.thumbnail || book.imageLinks.smallThumbnail || noCover;
+
     return(
         <li className="book-list-item col s6 m4 l2">
-            <img className="cover" src="http://books.google.com/books/content?id=z_JRBQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="Um Pouco Mais Sobre Harry Potter" />
-            <p className="title">Um Pouco Mais Sobre Harry Potter</p>
-            <p className="authors">Lucas Hernandes</p>
+            <img className="cover" src={cover} alt={title} />
+            <p className="title">{title}</p>
+            <p className="authors">{authors && authors.map((author) =>(
+                    <span key={author} className="book-authors">{author}</span>
+                ))}
+            </p>
         </li>
     );
 }
