@@ -5,6 +5,9 @@ import ListBooks from './ListBooks';
 import Pagination from './Pagination';
 
 class App extends Component {
+  state = {
+    books:[]
+  }
   render() {
     return (
       <div className="App">

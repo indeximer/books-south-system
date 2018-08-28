@@ -1,8 +1,21 @@
 import React, {Component} from 'react';
 import Container from './Container';
-//import PropTypes from 'prop-types';
+import {DebounceInput} from 'react-debounce-input';
+import * as BooksAPI from '../utils/BooksAPI';
 
 class SearchBar extends Component{
+
+    state ={
+        query:''
+    }
+
+    updateQuery(value){
+        const query = encodeURI(value);
+        this.setState({query : query});
+
+        BooksAPI.search(query)
+        .then((books) => console.log(books));
+    }
 
     render(){
         return(
@@ -12,7 +25,12 @@ class SearchBar extends Component{
                         <div className="card-panel search-bar">
                             <div className="input-field">
                                 <i className="material-icons prefix">search</i>
-                                <input type="text" id="query" />
+                                <DebounceInput
+                                    debounceTimeout={500}
+                                    type="text"
+                                    value={this.state.query}
+                                    onChange={(event) => this.updateQuery(event.target.value)}
+                                />
                                 <label htmlFor="query">Search</label>
                             </div>
                         </div>
